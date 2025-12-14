@@ -3,133 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A2N1 | Portfolio & Projects</title>
-    <style>
-        /* A simple, modern look using CSS */
-        :root {
-            --primary-color: #007bff; /* Blue */
-            --text-color: #333;
-            --bg-color: #f4f4f9;
-            --card-bg: #ffffff;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 20px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            margin-top: 30px;
-            border-top: 1px solid #ccc;
-            font-size: 0.9rem;
-            color: #666;
-        }
-    </style>
+    <title>A2N1 | Portfolio & Tech Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="https://github.com/A2N1" target="_blank">GitHub</a>
-        </nav>
-        <h1>A2N1's Web Presence</h1>
+        <div class="container">
+            <h1 class="logo">A2N1</h1>
+            <nav>
+                <a href="#about">Über mich</a>
+                <a href="#projects">Projekte</a>
+                <a href="https://github.com/A2N1" target="_blank">GitHub Profil</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="hero" id="about">
-            <h2>👋 Hello, I'm A2N1.</h2>
-            <p>Welcome to my personal site hosted on GitHub Pages! I am passionate about **Web Development** and **Open Source**.</p>
-            <p>This is where I document my journey, share my projects, and explore new technologies.</p>
-            <a href="mailto:your.email@example.com" style="display: inline-block; padding: 10px 20px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; margin-top: 15px;">Get in Touch</a>
+    <main class="container">
+        <section class="hero-section" id="about">
+            <div class="hero-content">
+                <h2>👋 Moin! Ich bin A2N1.</h2>
+                <p class="tagline">Entwickler | Student | Enthusiast für Open Source und Technologie.</p>
+                <p>Willkommen auf meiner digitalen Spielwiese. Hier teile ich meine Lernfortschritte, meine persönlichen Projekte und alles, was ich gerade in der Webentwicklung erkunde.</p>
+                <a href="mailto:your.email@example.com" class="btn primary">Kontakt aufnehmen</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn secondary">LinkedIn</a>
+            </div>
         </section>
+        
 
-        <section id="projects">
-            <h2>✨ My Key Projects</h2>
-            <div class="projects">
+        <section class="projects-section" id="projects">
+            <h3>🛠️ Meine wichtigsten Projekte</h3>
+            <div class="project-grid">
                 <article class="project-card">
-                    <h3>Project Title One</h3>
-                    <p>A short description of your first project. Mention the main technologies used (e.g., HTML, CSS, JavaScript).</p>
-                    <a href="#" target="_blank">View Live Demo</a> | <a href="https://github.com/A2N1/project-one" target="_blank">GitHub Repo</a>
+                    <h4>E-Commerce-Mockup</h4>
+                    <p>Ein responsives Frontend-Design, erstellt mit reinem HTML und CSS, das moderne Designprinzipien berücksichtigt.</p>
+                    <div class="links">
+                        <a href="#" target="_blank">Demo</a>
+                        <a href="https://github.com/A2N1/project-one" target="_blank">Code</a>
+                    </div>
                 </article>
 
                 <article class="project-card">
-                    <h3>Project Title Two</h3>
-                    <p>A description of a second significant project, perhaps a tool or a static site you built.</p>
-                    <a href="#" target="_blank">View Live Demo</a> | <a href="https://github.com/A2N1/project-two" target="_blank">GitHub Repo</a>
+                    <h4>Python Datenvisualisierung</h4>
+                    <p>Ein Skript zur Verarbeitung und Darstellung von Daten aus einer öffentlichen API, unter Verwendung von Python und einer JavaScript-Bibliothek.</p>
+                    <div class="links">
+                        <a href="#" target="_blank">Details</a>
+                        <a href="https://github.com/A2N1/project-two" target="_blank">Code</a>
+                    </div>
                 </article>
 
                 <article class="project-card">
-                    <h3>Future Idea / Learning</h3>
-                    <p>What are you currently learning or planning to build next? (e.g., React, Python, Data Science).</p>
-                    <a href="#" target="_blank">Read More</a>
+                    <h4>Aktuelles Lernprojekt</h4>
+                    <p>Fokus auf das Erlernen von **React.js** und Zustandsmanagement mit Hooks. Eine einfache To-Do-App ist in Arbeit.</p>
+                    <div class="links">
+                        <a href="#" target="_blank">Fortschritt</a>
+                    </div>
                 </article>
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2025 A2N1. All rights reserved. | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank">Source Code on GitHub</a>
+        <p>&copy; 2025 A2N1. Gebaut mit ❤️ und Code. | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank">Quellcode</a></p>
     </footer>
 
 </body>
