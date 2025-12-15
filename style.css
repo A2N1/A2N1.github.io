@@ -11,12 +11,11 @@
     --shadow-color: rgba(0, 0, 0, 0.4);
 
     --font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s, color 0.3s; /* Sanfter Übergang beim Wechsel */
 }
 
 /* --- Light Mode Überschreibungen --- */
 body.light-mode {
-    --primary-color: #0056b3; /* Etwas dunkleres Blau für besseren Kontrast auf hellem Grund */
+    --primary-color: #0056b3; 
     --secondary-color: #007bff;
     --dark-bg: #f9f9f9; /* Sehr heller Hintergrund */
     --light-bg: #ffffff; /* Weiß für Karten/Header */
@@ -87,7 +86,7 @@ header .container::after {
 }
 
 
-/* --- Hero Sektion --- */
+/* --- Hero Sektion (index.html) --- */
 .hero-section {
     padding: 80px 0;
     text-align: center;
@@ -119,7 +118,7 @@ header .container::after {
 
 .btn.primary {
     background-color: var(--primary-color);
-    color: var(--light-bg); /* Textfarbe im Primary Button sollte kontrastreich sein */
+    color: var(--light-bg); 
 }
 
 .btn.secondary {
@@ -137,7 +136,7 @@ header .container::after {
 }
 
 
-/* --- Projekte Sektion --- */
+/* --- Projekte Sektion (index.html) --- */
 .projects-section {
     padding: 40px 0;
     border-top: 1px solid var(--border-color);
@@ -208,7 +207,6 @@ footer a {
 
 /* --- Toggle Button Styling --- */
 .btn-toggle {
-    /* Verwenden Sie die Farben, die im aktuellen Modus am besten kontrastieren */
     background: var(--primary-color); 
     color: var(--light-bg); 
     border: none;
@@ -218,7 +216,6 @@ footer a {
     font-size: 1.2rem;
     line-height: 1;
     float: right;
-    /* Positionierung im Header */
     position: relative; 
     top: -30px; 
     transition: background 0.3s, color 0.3s;
@@ -227,6 +224,88 @@ footer a {
 .btn-toggle:hover {
     opacity: 0.9;
     box-shadow: 0 0 5px var(--primary-color);
+}
+
+
+/* --- STYLES FÜR profile.html --- */
+
+.page-intro {
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.page-intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.content-card {
+    background-color: var(--light-bg);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: background-color 0.5s ease;
+}
+
+.content-card h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: var(--text-color-light);
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skill-group h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.skill-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-group li {
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border-color);
+    color: var(--text-color-dark);
+}
+
+/* Experience List */
+.experience-list .experience-item {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.experience-list .experience-item:last-child {
+    border-bottom: none;
+}
+
+.experience-list .experience-item h4 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.experience-list .experience-item .meta {
+    font-style: italic;
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+}
+
+.download-cv {
+    display: block;
+    width: 250px;
+    text-align: center;
+    margin: 30px auto 0;
+    font-size: 1.1rem;
 }
 
 
@@ -241,7 +320,6 @@ footer a {
     nav {
         float: none;
         text-align: center;
-        /* Abstand, um Platz für den Toggle Button zu schaffen */
         margin-bottom: 15px; 
     }
 
@@ -258,12 +336,21 @@ footer a {
         font-size: 2rem;
     }
     
-    /* Positionierung des Toggle Buttons auf Mobilgeräten anpassen */
     .btn-toggle {
         float: none;
         position: absolute;
         top: 20px;
         right: 20px;
         margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-cv {
+        width: 90%;
     }
 }
