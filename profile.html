@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +7,42 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="page-profile">
 
     <header>
         <div class="container">
             <h1 class="logo">A2N1</h1>
             <nav>
-                <a href="profile.html">Profile</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="https://github.com/A2N1" target="_blank">GitHub Profil</a>
+                <a href="profile.html" data-lang-de="Profil" data-lang-en="Profile">Profil</a>
+                <a href="index.html#projects" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a>
+                <a href="https://github.com/A2N1" target="_blank">GitHub</a>
             </nav>
-            <button id="mode-toggle" class="btn-toggle">☀️</button>
+            <div class="toggle-group">
+                <button id="lang-toggle" class="btn-toggle lang-toggle" data-current-lang="de">EN</button>
+                <button id="mode-toggle" class="btn-toggle">☀️</button>
+            </div>
         </div>
     </header>
 
     <main class="container">
         
         <section class="page-intro">
-            <h2>👤 Profile</h2>
-            <p class="tagline">Some visions on my professional journey and skills.</p>
+            <h2 data-lang-de="👤 Mein Profil & Lebenslauf" data-lang-en="👤 My Profile & CV">👤 Mein Profil & Lebenslauf</h2>
+            <p class="tagline" data-lang-de="Einblicke in meine Ausbildung, meine technischen Fähigkeiten und meinen beruflichen Werdegang." data-lang-en="Insights into my education, technical skills, and professional journey.">Einblicke in meine Ausbildung, meine technischen Fähigkeiten und meinen beruflichen Werdegang.</p>
         </section>
 
         <section class="content-card">
-            <h3>💻 Technische Fähigkeiten (Tech Stack)</h3>
+            <h3 data-lang-de="💻 Technische Fähigkeiten (Tech Stack)" data-lang-en="💻 Technical Skills (Tech Stack)">💻 Technische Fähigkeiten (Tech Stack)</h3>
             <div class="skills-grid">
                 <article class="skill-group">
-                    <h4>Frontend-Entwicklung</h4>
+                    <h4 data-lang-de="Frontend-Entwicklung" data-lang-en="Frontend Development">Frontend-Entwicklung</h4>
                     <ul>
                         <li>HTML5, CSS3</li>
                         <li>JavaScript</li>
                     </ul>
                 </article>
                 <article class="skill-group">
-                    <h4>Backend & Datenbanken</h4>
+                    <h4 data-lang-de="Backend & Datenbanken" data-lang-en="Backend & Databases">Backend & Datenbanken</h4>
                     <ul>
                         <li>Python</li>
                         <li>SQL</li>
@@ -48,7 +51,7 @@
                     </ul>
                 </article>
                 <article class="skill-group">
-                    <h4>Tools</h4>
+                    <h4 data-lang-de="Tools & Methoden" data-lang-en="Tools & Methods">Tools & Methoden</h4>
                     <ul>
                         <li>Git & GitHub</li>
                         <li>VS Code, IntelliJ IDEA</li>
@@ -59,24 +62,24 @@
         </section>
 
         <section class="content-card experience-list">
-            <h3>🎓 Education</h3>
+            <h3 data-lang-de="🎓 Ausbildung" data-lang-en="🎓 Education">🎓 Ausbildung</h3>
             <div class="experience-item">
-                <h4>Business Managemement Assistant</h4>
-                <p class="meta">Berlin | 2020 – 2023</p>
-                <p>Schwerpunkte: "Steuerung und Kontrolle", "Industrielle Grundprozesse", "Wirtschafts- und Sozialkunde".</p>
+                <h4 data-lang-de="Kaufmann für Büromanagement" data-lang-en="Business Management Assistant">Kaufmann für Büromanagement</h4>
+                <p class="meta" data-lang-de="Berlin | 2020 – 2023" data-lang-en="Berlin | 2020 – 2023">Berlin | 2020 – 2023</p>
+                <p data-lang-de="Schwerpunkte: Steuerung und Kontrolle, Industrielle Grundprozesse, Wirtschafts- und Sozialkunde." data-lang-en="Focus: Controlling and management, industrial basic processes, economics and social studies.">Schwerpunkte: Steuerung und Kontrolle, Industrielle Grundprozesse, Wirtschafts- und Sozialkunde.</p>
             </div>
             <div class="experience-item">
-                <h4>Business Computing (Zertifikat)</h4>
-                <p class="meta">Online Tech School | 2021</p>
-                <p>Schwerpunkte: "Geschäftsprozesse und betriebliche Anwendungen", "Grundlagen Software-Engineering", "Rechnungswesen".</p>
+                <h4 data-lang-de="Wirtschaftsinformatik (Zertifikat)" data-lang-en="Business Computing (Certificate)">Wirtschaftsinformatik (Zertifikat)</h4>
+                <p class="meta" data-lang-de="Online Tech School | 2021" data-lang-en="Online Tech School | 2021">Online Tech School | 2021</p>
+                <p data-lang-de="Schwerpunkte: Geschäftsprozesse und betriebliche Anwendungen, Grundlagen Software-Engineering, Rechnungswesen." data-lang-en="Focus: Business processes and applications, software engineering fundamentals, accounting.">Schwerpunkte: Geschäftsprozesse und betriebliche Anwendungen, Grundlagen Software-Engineering, Rechnungswesen.</p>
             </div>
-            <a href="link-zum-pdf-cv.pdf" target="_blank" class="btn primary download-cv">In Bearbeitung</a>
+            <a href="link-zum-pdf-cv.pdf" target="_blank" class="btn primary download-cv" data-lang-de="In Bearbeitung" data-lang-en="Work in Progress">In Bearbeitung</a>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2025 A2N1. Built with ❤️ | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank">Source Code</a></p>
+        <p>&copy; 2025 A2N1. Built with ❤️ | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank" data-lang-de="Quellcode" data-lang-en="Source Code">Quellcode</a></p>
     </footer>
 
     <script src="script.js"></script>

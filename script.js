@@ -1,30 +1,61 @@
-// Funktion zum Umschalten zwischen den Modi
-function toggleMode() {
-    // 1. Klasse auf dem Body-Element umschalten
-    const body = document.body;
-    body.classList.toggle('light-mode');
+// --- Sprach-Logik ---
+const langToggleButton = document.getElementById('lang-toggle');
 
-    // 2. Präferenz im LocalStorage speichern
-    const isLightMode = body.classList.contains('light-mode');
-    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+function setLanguage(lang) {
+    // Finde alle Elemente, die Übersetzungen enthalten
+    const elements = document.querySelectorAll('[data-lang-de], [data-lang-en]');
+    
+    // 1. Alle Texte aktualisieren
+    elements.forEach(el => {
+        const key = `data-lang-${lang}`;
+        // Prüfen, ob das Element ein Attribut für die Zielsprache hat
+        if (el.hasAttribute(key)) {
+            // Spezieller Umgang mit Links und Buttons, damit href nicht überschrieben wird
+            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                el.textContent = el.getAttribute(key);
+            } else {
+                // Bei normalen Text-Elementen wie H, P oder DIV
+                el.textContent = el.getAttribute(key);
+            }
+        }
+    });
 
-    // 3. Button-Text (Emoji) aktualisieren
-    updateToggleText(isLightMode);
+    // 2. Button-Text und Attribut aktualisieren
+    if (langToggleButton) {
+        langToggleButton.textContent = lang === 'de' ? 'EN' : 'DE';
+        langToggleButton.setAttribute('data-current-lang', lang);
+        // Auch das HTML-Lang-Attribut setzen
+        document.documentElement.lang = lang;
+    }
+
+    // 3. Sprache im LocalStorage speichern
+    localStorage.setItem('language', lang);
 }
 
-// Funktion zum Aktualisieren des Button-Textes/Emojis
+function toggleLanguage() {
+    const currentLang = langToggleButton.getAttribute('data-current-lang') === 'de' ? 'en' : 'de';
+    setLanguage(currentLang);
+}
+
+// --- Dark/Light Mode Logik ---
 function updateToggleText(isLightMode) {
     const toggleButton = document.getElementById('mode-toggle');
     if (toggleButton) {
+        // Im Light Mode zeige den Mond (🌙), im Dark Mode die Sonne (☀️)
         toggleButton.textContent = isLightMode ? '🌙' : '☀️';
     }
 }
 
-// Funktion zum Laden der gespeicherten Präferenz beim Seitenstart
+function toggleMode() {
+    const body = document.body;
+    body.classList.toggle('light-mode');
+    const isLightMode = body.classList.contains('light-mode');
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+    updateToggleText(isLightMode);
+}
+
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
-    
-    // Standardmäßig Dark Mode, wenn nichts gespeichert ist
     let isLightMode = false;
     
     if (savedTheme === 'light') {
@@ -38,19 +69,25 @@ function loadTheme() {
     if (isLightMode) {
         document.body.classList.add('light-mode');
     }
-
-    // Button-Text beim Start setzen
     updateToggleText(isLightMode);
 }
 
-// Event-Listener hinzufügen, nachdem das Dokument geladen ist
+// --- Initialisierung ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme laden, bevor alles angezeigt wird
+    // 1. Theme laden (muss zuerst passieren, um FOUC zu vermeiden)
     loadTheme();
     
-    // 2. Klick-Handler für den Umschalt-Button
-    const toggleButton = document.getElementById('mode-toggle');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleMode);
+    // 2. Gespeicherte Sprache laden oder Standard setzen
+    const savedLang = localStorage.getItem('language') || 'de';
+    setLanguage(savedLang);
+
+    // 3. Event-Listener
+    const modeToggleButton = document.getElementById('mode-toggle');
+    if (modeToggleButton) {
+        modeToggleButton.addEventListener('click', toggleMode);
+    }
+    
+    if (langToggleButton) {
+        langToggleButton.addEventListener('click', toggleLanguage);
     }
 });

@@ -1,15 +1,14 @@
-/* --- Globale Variablen (Dark Mode ist der Standard) --- */
+/* --- Globale Variablen (Standard: Dark Mode / Galaxie-Theme) --- */
 :root {
-    /* Dark Mode Farben */
-    --primary-color: #007bff; /* Ein leuchtendes Blau für Akzente */
-    --secondary-color: #0056b3; /* Dunkleres Blau für Hover-Effekte */
-    --dark-bg: #1e1e1e; /* Dunkler Hintergrund */
-    --light-bg: #2d2d2d; /* Hellerer Hintergrund für Karten/Header */
-    --text-color-light: #f0f0f0; /* Helle Textfarbe */
-    --text-color-dark: #cccccc; /* Sekundäre Textfarbe */
+    /* Galaxie/Space Theme */
+    --primary-color: #64ffda; /* Neon-Türkis (Sternenlicht) */
+    --secondary-color: #00bcd4; /* Etwas dunklerer Neon-Ton */
+    --dark-bg: #0a0a0a; /* Tiefes Schwarz */
+    --light-bg: #1e1e1e; /* Dunkles Grau für Galaxie-Karten */
+    --text-color-light: #f0f0f0; 
+    --text-color-dark: #cccccc; 
     --border-color: #3a3a3a;
-    --shadow-color: rgba(0, 0, 0, 0.4);
-
+    --shadow-color: rgba(100, 255, 218, 0.15); /* Neon-Glow-Schatten */
     --font-family: 'Roboto', sans-serif;
 }
 
@@ -17,16 +16,16 @@
 body.light-mode {
     --primary-color: #0056b3; 
     --secondary-color: #007bff;
-    --dark-bg: #f9f9f9; /* Sehr heller Hintergrund */
-    --light-bg: #ffffff; /* Weiß für Karten/Header */
-    --text-color-light: #333333; /* Dunkler Text */
+    --dark-bg: #f9f9f9; 
+    --light-bg: #ffffff; 
+    --text-color-light: #333333; 
     --text-color-dark: #666666;
     --border-color: #e0e0e0;
     --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 
-/* --- Basis-Styling (Gilt für beide Modi) --- */
+/* --- Basis-Styling --- */
 body {
     font-family: var(--font-family);
     margin: 0;
@@ -34,7 +33,6 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-color-light);
     line-height: 1.6;
-    /* Übergang auf dem Body-Element, um den Farbschema-Wechsel sanfter zu machen */
     transition: background-color 0.5s ease, color 0.5s ease; 
 }
 
@@ -43,15 +41,81 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative; 
+    z-index: 10; 
 }
+
+/* Galaxie-Hintergrund-Effekt (Nur auf index.html und nur im Dark Mode) */
+body#page-index:not(.light-mode) {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.stars {
+    display: none; /* Standardmäßig ausgeblendet */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(45deg);
+}
+
+body#page-index:not(.light-mode) .stars {
+    display: block; /* Im Dark Mode anzeigen */
+}
+
+/* CSS Sterne erstellen */
+.stars.small {
+    background-color: transparent;
+    box-shadow: 
+        100px 30px #FFF, -100px -30px #FFF, 50px 150px #FFF, -50px -150px #FFF,
+        200px 80px #FFF, -200px -80px #FFF, 150px 220px #FFF, -150px -220px #FFF,
+        300px 120px #FFF, -300px -120px #FFF, 250px 300px #FFF, -250px -300px #FFF;
+    animation: move-stars 50s linear infinite;
+    opacity: 0.8;
+}
+
+.stars.medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+        10px 100px #FFF, 20px 200px #FFF, 30px 300px #FFF, 40px 400px #FFF,
+        150px 50px #FFF, 250px 150px #FFF, 350px 250px #FFF, 450px 350px #FFF;
+    animation: move-stars 100s linear infinite;
+    opacity: 0.6;
+}
+
+.stars.large {
+    width: 3px;
+    height: 3px;
+    box-shadow: 
+        10px 50px #FFF, 150px 150px #FFF, 300px 300px #FFF, 450px 450px #FFF;
+    animation: move-stars 150s linear infinite;
+    opacity: 0.4;
+}
+
+@keyframes move-stars {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-1000px, -1000px);
+    }
+}
+/* Ende Galaxie-Hintergrund */
 
 /* --- Header und Navigation --- */
 header {
-    background-color: var(--light-bg);
+    background-color: rgba(10, 10, 10, 0.8); /* Leichte Transparenz für Galaxie-Blick */
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease; 
+    box-shadow: 0 0 10px var(--shadow-color); /* Neon-Glow */
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    transition: background-color 0.5s ease;
 }
 
 .logo {
@@ -67,15 +131,16 @@ nav {
 }
 
 nav a {
-    color: var(--text-color-light);
+    color: var(--text-color-dark);
     text-decoration: none;
     margin-left: 20px;
     font-weight: 400;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 nav a:hover {
     color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color); /* Neon-Hover */
 }
 
 /* Clearfix für Header-Elemente */
@@ -88,20 +153,23 @@ header .container::after {
 
 /* --- Hero Sektion (index.html) --- */
 .hero-section {
-    padding: 80px 0;
+    padding: 100px 0;
     text-align: center;
+    text-shadow: 0 0 8px var(--shadow-color);
 }
 
 .hero-content h2 {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     margin-bottom: 10px;
     color: var(--primary-color);
+    text-transform: uppercase;
 }
 
 .tagline {
     font-size: 1.2rem;
     color: var(--text-color-dark);
     margin-bottom: 30px;
+    font-weight: 300;
 }
 
 /* Buttons */
@@ -118,7 +186,7 @@ header .container::after {
 
 .btn.primary {
     background-color: var(--primary-color);
-    color: var(--light-bg); 
+    color: var(--dark-bg); 
 }
 
 .btn.secondary {
@@ -158,13 +226,14 @@ header .container::after {
     background-color: var(--light-bg);
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    box-shadow: 0 0 15px var(--shadow-color); /* Starker Glow */
+    border-left: 5px solid var(--primary-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px var(--shadow-color);
+    transform: scale(1.02);
+    box-shadow: 0 0 25px var(--primary-color);
 }
 
 .project-card h4 {
@@ -172,6 +241,7 @@ header .container::after {
     margin-top: 0;
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 5px;
+    text-shadow: 0 0 5px var(--primary-color);
 }
 
 .project-card p {
@@ -205,25 +275,38 @@ footer a {
     text-decoration: none;
 }
 
-/* --- Toggle Button Styling --- */
+/* --- Toggle Buttons Styling --- */
+.toggle-group {
+    float: right;
+    position: relative;
+    top: -30px;
+}
+
 .btn-toggle {
     background: var(--primary-color); 
-    color: var(--light-bg); 
+    color: var(--dark-bg); 
     border: none;
     padding: 8px 12px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
     line-height: 1;
-    float: right;
-    position: relative; 
-    top: -30px; 
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    margin-left: 10px;
 }
 
 .btn-toggle:hover {
     opacity: 0.9;
-    box-shadow: 0 0 5px var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.lang-toggle {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--dark-bg) !important; 
+    background-color: var(--text-color-light); 
+    border-radius: 5px;
+    padding: 8px 10px;
 }
 
 
@@ -336,10 +419,10 @@ footer a {
         font-size: 2rem;
     }
     
-    .btn-toggle {
+    .toggle-group {
         float: none;
         position: absolute;
-        top: 20px;
+        top: 15px;
         right: 20px;
         margin: 0;
     }
