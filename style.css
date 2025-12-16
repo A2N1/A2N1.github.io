@@ -1,39 +1,57 @@
-/* --- Globale Variablen (Standard: Dark Mode / Galaxie-Theme) --- */
+/* --- Globale Variablen (Standard: Dark Mode) --- */
 :root {
-    /* Galaxie/Space Theme */
-    --primary-color: #64ffda; /* Neon-Türkis (Sternenlicht) */
-    --secondary-color: #00bcd4; /* Etwas dunklerer Neon-Ton */
+    /* 4 Farben Palette: #0a0a0a, #f0f0f0, #00bcd4 (Primär), #32ff7e (Sekundär/Highlight) */
+    --primary-accent: #00bcd4; /* Neon-Türkis/Blau für CTAs und starken Akzent */
+    --secondary-accent: #00bcd4; /* Neon-Grün für Links und UI-Details */
     --dark-bg: #0a0a0a; /* Tiefes Schwarz */
-    --light-bg: #1e1e1e; /* Dunkles Grau für Galaxie-Karten */
-    --text-color-light: #f0f0f0; 
-    --text-color-dark: #cccccc; 
+    --light-text: #f0f0f0; /* Helle Textfarbe */
+    
+    --card-bg: #1e1e1e; /* Hintergrund für Karten/Elemente */
+    --text-color-secondary: #cccccc; /* Sekundäre Textfarbe */
     --border-color: #3a3a3a;
-    --shadow-color: rgba(100, 255, 218, 0.15); /* Neon-Glow-Schatten */
+    --shadow-color: rgba(0, 188, 212, 0.2); /* Neon-Blau-Schatten */
+
     --font-family: 'Roboto', sans-serif;
 }
 
-/* --- Light Mode Überschreibungen --- */
+/* --- Light Mode Überschreibungen (Hoher Kontrast) --- */
 body.light-mode {
-    --primary-color: #0056b3; 
-    --secondary-color: #007bff;
-    --dark-bg: #f9f9f9; 
-    --light-bg: #ffffff; 
-    --text-color-light: #333333; 
-    --text-color-dark: #666666;
+    --primary-accent: #007bff; /* Klassisches Tech-Blau */
+    --secondary-accent: #007bff;
+    --dark-bg: #f5f5f5; /* Off-White Hintergrund */
+    --light-text: #333333; /* Dunkler Text */
+    
+    --card-bg: #ffffff; /* Weiß für Karten */
+    --text-color-secondary: #666666;
     --border-color: #e0e0e0;
     --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 
-/* --- Basis-Styling --- */
+/* --- Basis-Styling und Scroll Snapping --- */
+html {
+    scroll-behavior: smooth; 
+}
+
 body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
     background-color: var(--dark-bg);
-    color: var(--text-color-light);
+    color: var(--light-text);
     line-height: 1.6;
     transition: background-color 0.5s ease, color 0.5s ease; 
+    
+    /* ECHTES SCROLL SNAPPING */
+    scroll-snap-type: y mandatory; /* Scrollen stoppt nur bei Sektionen */
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/* Alle Haupt-Sektionen sind die Scroll-Snap-Punkte */
+.hero-section, .skills-section, .projects-section {
+    scroll-snap-align: start; /* Sektion startet oben im Viewport */
+    min-height: 100vh; /* Macht es effektiver */
 }
 
 /* Layout-Container */
@@ -41,142 +59,134 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-    position: relative; 
-    z-index: 10; 
 }
 
-/* Galaxie-Hintergrund-Effekt (Nur auf index.html und nur im Dark Mode) */
-body#page-index:not(.light-mode) {
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    background-attachment: fixed;
-    overflow-x: hidden;
+/* Padding für alle Hauptsektionen */
+.section-padding {
+    padding: 80px 0;
+    border-top: 1px solid var(--border-color);
 }
 
-.stars {
-    display: none; /* Standardmäßig ausgeblendet */
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-section {
+    border-top: none; 
+    padding-top: 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Zentriert den Inhalt vertikal im 100vh Bereich */
+}
+
+
+/* --- Top Bar (Toggles und Inline-Navigation) --- */
+.top-bar-toggles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute; /* Positioniert Toggles/Nav oben im Hero-Bereich */
+    top: 20px;
     width: 100%;
-    height: 100%;
-    transform: rotateZ(45deg);
+    left: 0;
+    padding: 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.container > .top-bar-toggles {
+    position: relative; /* Setzt die Position wieder innerhalb des Containers */
 }
 
-body#page-index:not(.light-mode) .stars {
-    display: block; /* Im Dark Mode anzeigen */
-}
 
-/* CSS Sterne erstellen */
-.stars.small {
-    background-color: transparent;
-    box-shadow: 
-        100px 30px #FFF, -100px -30px #FFF, 50px 150px #FFF, -50px -150px #FFF,
-        200px 80px #FFF, -200px -80px #FFF, 150px 220px #FFF, -150px -220px #FFF,
-        300px 120px #FFF, -300px -120px #FFF, 250px 300px #FFF, -250px -300px #FFF;
-    animation: move-stars 50s linear infinite;
-    opacity: 0.8;
-}
-
-.stars.medium {
-    width: 2px;
-    height: 2px;
-    box-shadow: 
-        10px 100px #FFF, 20px 200px #FFF, 30px 300px #FFF, 40px 400px #FFF,
-        150px 50px #FFF, 250px 150px #FFF, 350px 250px #FFF, 450px 350px #FFF;
-    animation: move-stars 100s linear infinite;
-    opacity: 0.6;
-}
-
-.stars.large {
-    width: 3px;
-    height: 3px;
-    box-shadow: 
-        10px 50px #FFF, 150px 150px #FFF, 300px 300px #FFF, 450px 450px #FFF;
-    animation: move-stars 150s linear infinite;
-    opacity: 0.4;
-}
-
-@keyframes move-stars {
-    from {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translate(-1000px, -1000px);
-    }
-}
-/* Ende Galaxie-Hintergrund */
-
-/* --- Header und Navigation --- */
-header {
-    background-color: rgba(10, 10, 10, 0.8); /* Leichte Transparenz für Galaxie-Blick */
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem 0;
-    box-shadow: 0 0 10px var(--shadow-color); /* Neon-Glow */
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    transition: background-color 0.5s ease;
-}
-
-.logo {
-    color: var(--primary-color);
-    margin: 0;
-    font-size: 1.8rem;
-    float: left;
-}
-
-nav {
-    float: right;
-    margin-top: 5px;
-}
-
-nav a {
-    color: var(--text-color-dark);
+.inline-nav a {
+    color: var(--text-color-secondary);
     text-decoration: none;
     margin-left: 20px;
     font-weight: 400;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px var(--primary-color); /* Neon-Hover */
+.inline-nav a:hover {
+    color: var(--primary-accent);
 }
 
-/* Clearfix für Header-Elemente */
-header .container::after {
-    content: "";
-    display: table;
-    clear: both;
+/* Logo für die Hero Section */
+.logo-standalone {
+    color: var(--primary-accent);
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
 }
 
 
-/* --- Hero Sektion (index.html) --- */
-.hero-section {
-    padding: 100px 0;
-    text-align: center;
-    text-shadow: 0 0 8px var(--shadow-color);
+/* --- Toggle Buttons Styling (Mit ausgeschriebenem Text) --- */
+.btn-toggle {
+    background: var(--primary-accent); 
+    color: var(--dark-bg); 
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Etwas kleiner für den Text */
+    line-height: 1;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.btn-toggle:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px var(--primary-accent);
+}
+
+.lang-toggle {
+    background-color: var(--text-color-secondary); 
+    color: var(--dark-bg) !important; 
+    padding: 8px 10px;
+}
+
+
+/* --- HERO Section (Dynamic Heading, 2-Spalten Layout) --- */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 40px;
+    align-items: center;
 }
 
 .hero-content h2 {
-    font-size: 3.5rem;
+    /* Dynamic Heading Size: Große Schrift auf Desktop */
+    font-size: clamp(2rem, 5vw, 3rem); 
     margin-bottom: 10px;
-    color: var(--primary-color);
-    text-transform: uppercase;
+    color: var(--primary-accent);
+    line-height: 1.2;
 }
 
 .tagline {
     font-size: 1.2rem;
-    color: var(--text-color-dark);
-    margin-bottom: 30px;
+    color: var(--text-color-secondary);
+    margin-bottom: 20px;
     font-weight: 300;
+}
+
+.hero-image {
+    background-color: var(--card-bg); 
+    min-height: 300px;
+    border-radius: 8px;
+    border: 3px solid var(--primary-accent); 
+    box-shadow: 0 0 20px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: var(--primary-accent);
+    transition: all 0.3s ease;
+}
+
+.hero-actions {
+    margin-top: 20px;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 12px 25px;
-    margin: 10px 10px;
+    margin: 10px 10px 10px 0; 
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -185,157 +195,42 @@ header .container::after {
 }
 
 .btn.primary {
-    background-color: var(--primary-color);
+    background-color: var(--primary-accent);
     color: var(--dark-bg); 
 }
 
 .btn.secondary {
     background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--secondary-accent);
+    border: 2px solid var(--secondary-accent);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-}
-
-.btn.primary:hover {
-    background-color: var(--secondary-color);
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
 
 
-/* --- Projekte Sektion (index.html) --- */
-.projects-section {
-    padding: 40px 0;
-    border-top: 1px solid var(--border-color);
-}
-
-.projects-section h3 {
+/* --- SKILLS/PROJECTS Sections --- */
+h3 {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2rem;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    background-color: var(--light-bg);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px var(--shadow-color); /* Starker Glow */
-    border-left: 5px solid var(--primary-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 25px var(--primary-color);
-}
-
-.project-card h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 5px;
-    text-shadow: 0 0 5px var(--primary-color);
-}
-
-.project-card p {
-    color: var(--text-color-dark);
-    margin-bottom: 20px;
-}
-
-.project-card .links a {
-    color: var(--primary-color);
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: 500;
-}
-
-.project-card .links a:hover {
-    text-decoration: underline;
-}
-
-/* --- Footer --- */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    color: var(--text-color-dark);
-}
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-/* --- Toggle Buttons Styling --- */
-.toggle-group {
-    float: right;
-    position: relative;
-    top: -30px;
-}
-
-.btn-toggle {
-    background: var(--primary-color); 
-    color: var(--dark-bg); 
-    border: none;
-    padding: 8px 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    margin-left: 10px;
-}
-
-.btn-toggle:hover {
-    opacity: 0.9;
-    box-shadow: 0 0 10px var(--primary-color);
-}
-
-.lang-toggle {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: var(--dark-bg) !important; 
-    background-color: var(--text-color-light); 
-    border-radius: 5px;
-    padding: 8px 10px;
-}
-
-
-/* --- STYLES FÜR profile.html --- */
-
-.page-intro {
-    padding: 60px 0 40px;
-    text-align: center;
-}
-
-.page-intro h2 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-}
-
 .content-card {
-    background-color: var(--light-bg);
+    background-color: var(--card-bg);
     padding: 30px;
     margin-bottom: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px var(--shadow-color);
-    transition: background-color 0.5s ease;
 }
 
 .content-card h3 {
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--secondary-accent);
     padding-bottom: 10px;
     margin-bottom: 25px;
-    color: var(--text-color-light);
+    color: var(--light-text);
 }
 
 /* Skills Grid */
@@ -346,7 +241,7 @@ footer a {
 }
 
 .skill-group h4 {
-    color: var(--primary-color);
+    color: var(--primary-accent);
     margin-top: 0;
 }
 
@@ -358,82 +253,119 @@ footer a {
 .skill-group li {
     padding: 5px 0;
     border-bottom: 1px dashed var(--border-color);
-    color: var(--text-color-dark);
+    color: var(--text-color-secondary);
 }
 
-/* Experience List */
-.experience-list .experience-item {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 15px;
+.skill-group li i {
+    color: var(--secondary-accent);
+    margin-right: 10px;
 }
 
-.experience-list .experience-item:last-child {
-    border-bottom: none;
+/* Projects Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.experience-list .experience-item h4 {
-    margin-bottom: 5px;
-    color: var(--primary-color);
+.project-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.experience-list .experience-item .meta {
-    font-style: italic;
-    color: var(--text-color-dark);
-    margin-bottom: 10px;
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
 }
 
-.download-cv {
-    display: block;
-    width: 250px;
+.project-card h4 {
+    color: var(--primary-accent);
+    margin-top: 0;
+    border-bottom: 2px solid var(--secondary-accent);
+    padding-bottom: 5px;
+}
+
+.project-card p {
+    color: var(--text-color-secondary);
+    margin-bottom: 20px;
+}
+
+.project-card .links a {
+    color: var(--secondary-accent);
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.project-card .links a:hover {
+    color: var(--primary-accent);
+}
+
+/* --- Footer --- */
+footer {
     text-align: center;
-    margin: 30px auto 0;
-    font-size: 1.1rem;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-color-secondary);
+}
+
+footer a {
+    color: var(--secondary-accent);
+    text-decoration: none;
 }
 
 
 /* --- Responsivität --- */
-@media (max-width: 768px) {
-    .logo {
-        float: none;
-        text-align: center;
-        margin-bottom: 15px;
+@media (max-width: 900px) {
+    .top-bar-toggles {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative; /* Im mobilen Layout einfacher Fluss */
+        top: 0;
+        margin-bottom: 30px;
+        padding: 0;
     }
 
-    nav {
-        float: none;
-        text-align: center;
-        margin-bottom: 15px; 
+    .inline-nav {
+        margin-top: 15px;
+    }
+    
+    .logo-standalone {
+        margin-top: 20px;
     }
 
-    nav a {
-        display: block;
-        margin: 5px 0;
+    /* Hero Section wird auf Mobile einspaltig */
+    .hero-grid {
+        grid-template-columns: 1fr;
     }
-
-    .hero-section {
-        padding: 50px 0;
+    
+    .hero-image {
+        order: -1; /* Bild kommt über den Text */
+        margin-bottom: 30px;
     }
 
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: 2.2rem; 
     }
-    
-    .toggle-group {
-        float: none;
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        margin: 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .inline-nav a {
+        margin-left: 10px;
     }
 }
 
 @media (max-width: 600px) {
     .skills-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .download-cv {
-        width: 90%;
     }
 }

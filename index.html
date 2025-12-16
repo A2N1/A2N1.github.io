@@ -3,74 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A2N1 | Portfolio & Tech Projects</title>
+    <title>A2N1 | One-Page Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body id="page-index">
-
-    <div class="stars small"></div>
-    <div class="stars medium"></div>
-    <div class="stars large"></div>
-
-    <header>
-        <div class="container">
-            <h1 class="logo">A2N1</h1>
-            <nav>
-                <a href="profile.html" data-lang-de="Profil" data-lang-en="Profile">Profil</a>
-                <a href="#projects" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a>
-                <a href="https://github.com/A2N1" target="_blank">GitHub</a>
-            </nav>
-            <div class="toggle-group">
-                <button id="lang-toggle" class="btn-toggle lang-toggle" data-current-lang="de">EN</button>
-                <button id="mode-toggle" class="btn-toggle">☀️</button>
-            </div>
-        </div>
-    </header>
+<body id="page-single">
 
     <main class="container">
         
-        <section class="hero-section galaxy-center" id="about">
-            <div class="hero-content">
-                <h2 data-lang-de="👋 Moin! Ich bin A2N1." data-lang-en="👋 Hello! I'm A2N1.">👋 Moin! Ich bin A2N1.</h2>
-                <p class="tagline" data-lang-de="Entwickler | Student | Enthusiast für Open Source und Technologie." data-lang-en="Developer | Student | Open Source and technology enthusiast.">Entwickler | Student | Enthusiast für Open Source und Technologie.</p>
-                <p data-lang-de="Willkommen auf meiner digitalen Spielwiese. Hier teile ich meine Lernfortschritte, meine persönlichen Projekte und alles, was ich gerade in der Webentwicklung erkunde." data-lang-en="Welcome to my digital playground. This is where I share my learning progress, personal projects, and everything I am currently exploring in web development.">Willkommen auf meiner digitalen Spielwiese. Hier teile ich meine Lernfortschritte, meine persönlichen Projekte und alles, was ich gerade in der Webentwicklung erkunde.</p>
-                <a href="mailto:your.email@example.com" class="btn primary" data-lang-de="Kontakt aufnehmen" data-lang-en="Get in Touch">Kontakt aufnehmen</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn secondary">LinkedIn</a>
+        <section class="hero-section section-padding" id="about">
+            
+            <div class="top-bar-toggles">
+                <div class="toggle-group">
+                    <button id="lang-toggle" class="btn-toggle lang-toggle" data-current-lang="de">English</button>
+                    <button id="mode-toggle" class="btn-toggle">Light Mode</button>
+                </div>
+                
+                <nav class="inline-nav">
+                    <a href="#skills" data-lang-de="Fähigkeiten" data-lang-en="Skills">Fähigkeiten</a>
+                    <a href="#projects" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a>
+                    <a href="https://github.com/A2N1" target="_blank">GitHub <i class="fab fa-github"></i></a>
+                </nav>
+            </div>
+            
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="logo-standalone">A2N1</h1>
+                    <h2 data-lang-de="Moin! Ich bin A2N1, Ihr Entwickler." data-lang-en="Hello! I'm A2N1, Your Developer.">Moin! Ich bin A2N1, Ihr Entwickler.</h2>
+                    <p class="tagline" data-lang-de="Ich nutze Code, um Probleme zu lösen. Fokus: Python, SQL & Webentwicklung." data-lang-en="I use code to solve problems. Focus: Python, SQL & Web Development.">Ich nutze Code, um Probleme zu lösen. Fokus: Python, SQL & Webentwicklung.</p>
+                    <p data-lang-de="Mein Ziel ist es, klare und effiziente Webanwendungen zu erstellen. Hier teile ich meine Lernfortschritte und persönlichen Projekte." data-lang-en="My goal is to create clear and efficient web applications. Here I share my learning progress and personal projects.">Mein Ziel ist es, klare und effiziente Webanwendungen zu erstellen. Hier teile ich meine Lernfortschritte und persönlichen Projekte.</p>
+                    
+                    <div class="hero-actions">
+                        <a href="mailto:your.email@example.com" class="btn primary" data-lang-de="Kontakt aufnehmen" data-lang-en="Get in Touch"><i class="fas fa-envelope"></i> Kontakt aufnehmen</a>
+                        <a href="#skills" class="btn secondary" data-lang-de="Fähigkeiten ansehen" data-lang-en="View Skills"><i class="fas fa-arrow-down"></i> Fähigkeiten ansehen</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
             </div>
         </section>
 
-        <section class="projects-section" id="projects">
-            <h3 data-lang-de="🛠️ Meine wichtigsten Projekte" data-lang-en="🛠️ My Key Projects">🛠️ Meine wichtigsten Projekte</h3>
+        <section class="skills-section section-padding" id="skills">
+            <div class="content-card">
+                <h3 data-lang-de="Technische Fähigkeiten (Tech Stack)" data-lang-en="Technical Skills (Tech Stack)">Technische Fähigkeiten (Tech Stack)</h3>
+                <div class="skills-grid">
+                    <article class="skill-group">
+                        <h4 data-lang-de="Frontend & UI" data-lang-en="Frontend & UI">Frontend & UI</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> HTML5, CSS3</li>
+                            <li><i class="fas fa-check-circle"></i> JavaScript</li>
+                            <li data-lang-de="Lernen: React.js" data-lang-en="Learning: React.js"><i class="fas fa-check-circle"></i> Lernen: React.js</li>
+                        </ul>
+                    </article>
+                    <article class="skill-group">
+                        <h4 data-lang-de="Backend & Daten" data-lang-en="Backend & Data">Backend & Daten</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Python</li>
+                            <li><i class="fas fa-check-circle"></i> SQL</li>
+                            <li><i class="fas fa-check-circle"></i> R </li>
+                            <li><i class="fas fa-check-circle"></i> Oracle (Grundkenntnisse)</li>
+                        </ul>
+                    </article>
+                    <article class="skill-group">
+                        <h4 data-lang-de="Tools & Methoden" data-lang-en="Tools & Methods">Tools & Methoden</h4>
+                        <ul>
+                            <li><i class="fas fa-tools"></i> Git & GitHub</li>
+                            <li><i class="fas fa-tools"></i> VS Code, IntelliJ IDEA</li>
+                            <li><i class="fas fa-tools"></i> ERP-Systeme</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section section-padding" id="projects">
+            <h3 data-lang-de="Meine wichtigsten Projekte" data-lang-en="My Key Projects">Meine wichtigsten Projekte</h3>
             <div class="project-grid">
                 <article class="project-card">
                     <h4>Tortenshop</h4>
                     <p data-lang-de="Eine statische Website für einen Tortenshop, erstellt mit HTML und CSS." data-lang-en="A static website for a cake shop, created using HTML and CSS.">Eine statische Website für einen Tortenshop, erstellt mit HTML und CSS.</p>
                     <div class="links">
-                        <a href="https://github.com/A2N1/Tortenwunder" target="_blank" data-lang-de="Code" data-lang-en="Code">Code</a>
+                        <a href="https://github.com/A2N1/Tortenwunder" target="_blank" data-lang-de="Code" data-lang-en="Code"><i class="fas fa-code"></i> Code</a>
                     </div>
                 </article>
                 <article class="project-card">
-                    <h4>Coming Soon</h4>
+                    <h4>Python Datenvisualisierung</h4>
                     <p data-lang-de="Ein Skript zur Verarbeitung und Darstellung von Daten aus einer öffentlichen API, unter Verwendung von Python und einer JavaScript-Bibliothek." data-lang-en="A script for processing and visualizing data from a public API, using Python and a JavaScript library.">Ein Skript zur Verarbeitung und Darstellung von Daten aus einer öffentlichen API, unter Verwendung von Python und einer JavaScript-Bibliothek.</p>
                     <div class="links">
-                        <a href="#" target="_blank" data-lang-de="Details" data-lang-en="Details">Details</a>
-                        <a href="https://github.com/A2N1/project-two" target="_blank" data-lang-de="Code" data-lang-en="Code">Code</a>
+                        <a href="#" target="_blank" data-lang-de="Details" data-lang-en="Details"><i class="fas fa-info-circle"></i> Details</a>
+                        <a href="https://github.com/A2N1/project-two" target="_blank" data-lang-de="Code" data-lang-en="Code"><i class="fas fa-code"></i> Code</a>
                     </div>
                 </article>
                 <article class="project-card">
-                    <h4>coming soon</h4>
+                    <h4>Aktuelles Lernprojekt</h4>
                     <p data-lang-de="Fokus auf das Erlernen von **React.js** und Zustandsmanagement mit Hooks. Eine einfache To-Do-App ist in Arbeit." data-lang-en="Focus on learning **React.js** and state management with Hooks. A simple To-Do app is currently in progress.">Fokus auf das Erlernen von **React.js** und Zustandsmanagement mit Hooks. Eine einfache To-Do-App ist in Arbeit.</p>
                     <div class="links">
-                        <a href="#" target="_blank" data-lang-de="Fortschritt" data-lang-en="Progress">Fortschritt</a>
+                        <a href="#" target="_blank" data-lang-de="Fortschritt" data-lang-en="Progress"><i class="fas fa-laptop-code"></i> Fortschritt</a>
                     </div>
                 </article>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2025 A2N1. Built with ❤️ | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank" data-lang-de="Quellcode" data-lang-en="Source Code">Quellcode</a></p>
+        <p>&copy; 2025 A2N1. Built with <i class="fas fa-heart"></i> | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank" data-lang-de="Quellcode" data-lang-en="Source Code">Quellcode</a></p>
     </footer>
 
     <script src="script.js"></script>

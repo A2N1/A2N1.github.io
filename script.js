@@ -8,23 +8,21 @@ function setLanguage(lang) {
     // 1. Alle Texte aktualisieren
     elements.forEach(el => {
         const key = `data-lang-${lang}`;
-        // Prüfen, ob das Element ein Attribut für die Zielsprache hat
         if (el.hasAttribute(key)) {
-            // Spezieller Umgang mit Links und Buttons, damit href nicht überschrieben wird
-            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
-                el.textContent = el.getAttribute(key);
-            } else {
-                // Bei normalen Text-Elementen wie H, P oder DIV
-                el.textContent = el.getAttribute(key);
+            const icon = el.querySelector('i');
+            el.textContent = el.getAttribute(key);
+            if (icon) {
+                // Icon nur hinzufügen, wenn es vorhanden ist (z.B. GitHub, Buttons)
+                el.prepend(icon); 
             }
         }
     });
 
     // 2. Button-Text und Attribut aktualisieren
     if (langToggleButton) {
-        langToggleButton.textContent = lang === 'de' ? 'EN' : 'DE';
+        // Wenn die aktuelle Sprache DE ist, zeigen wir 'English' als nächsten Zustand an
+        langToggleButton.textContent = lang === 'de' ? 'English' : 'Deutsch';
         langToggleButton.setAttribute('data-current-lang', lang);
-        // Auch das HTML-Lang-Attribut setzen
         document.documentElement.lang = lang;
     }
 
@@ -41,8 +39,8 @@ function toggleLanguage() {
 function updateToggleText(isLightMode) {
     const toggleButton = document.getElementById('mode-toggle');
     if (toggleButton) {
-        // Im Light Mode zeige den Mond (🌙), im Dark Mode die Sonne (☀️)
-        toggleButton.textContent = isLightMode ? '🌙' : '☀️';
+        // Wenn es Light Mode ist, zeige den Dark Mode Toggle an
+        toggleButton.textContent = isLightMode ? 'Dark Mode' : 'Light Mode';
     }
 }
 
@@ -61,7 +59,7 @@ function loadTheme() {
     if (savedTheme === 'light') {
         isLightMode = true;
     } 
-    // Optionale: Prüfe die System-Präferenz, falls kein Theme gespeichert ist
+    // Optionale: Prüfe die System-Präferenz
     else if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
         isLightMode = true;
     }
@@ -74,7 +72,7 @@ function loadTheme() {
 
 // --- Initialisierung ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme laden (muss zuerst passieren, um FOUC zu vermeiden)
+    // 1. Theme laden
     loadTheme();
     
     // 2. Gespeicherte Sprache laden oder Standard setzen
