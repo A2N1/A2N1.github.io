@@ -3,112 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A2N1 | One-Page Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>N I R O – Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body id="page-single">
-
-    <main class="container">
-        
-        <section class="hero-section section-padding" id="about">
-            
-            <div class="top-bar-toggles">
-                <div class="toggle-group">
-                    <button id="lang-toggle" class="btn-toggle lang-toggle" data-current-lang="de">English</button>
-                    <button id="mode-toggle" class="btn-toggle">Light Mode</button>
-                </div>
-                
-                <nav class="inline-nav">
-                    <a href="#skills" data-lang-de="Fähigkeiten" data-lang-en="Skills">Fähigkeiten</a>
-                    <a href="#projects" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a>
-                    <a href="https://github.com/A2N1" target="_blank">GitHub <i class="fab fa-github"></i></a>
-                </nav>
-            </div>
-            
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="logo-standalone">A2N1</h1>
-                    <h2 data-lang-de="Moin! Ich bin A2N1, Entwickler." data-lang-en="Hello! I'm A2N1, Developer.">Moin! Ich bin A2N1, Entwickler.</h2>
-                    <p class="tagline" data-lang-de="Ich nutze Code, um Probleme zu lösen. Fokus: Python, SQL & Webentwicklung." data-lang-en="I use code to solve problems. Focus: Python, SQL & Web Development.">Ich nutze Code, um Probleme zu lösen. Fokus: Python, SQL & Webentwicklung.</p>
-                    <p data-lang-de="Mein Ziel ist es, klare und effiziente Webanwendungen zu erstellen. Hier teile ich meine Lernfortschritte und persönlichen Projekte." data-lang-en="My goal is to create clear and efficient web applications. Here I share my learning progress and personal projects.">Mein Ziel ist es, klare und effiziente Webanwendungen zu erstellen. Hier teile ich meine Lernfortschritte und persönlichen Projekte.</p>
-                    
-                    <div class="hero-actions">
-                        <a href="mailto:your.email@example.com" class="btn primary" data-lang-de="Kontakt aufnehmen" data-lang-en="Get in Touch"><i class="fas fa-envelope"></i> Kontakt aufnehmen</a>
-                        <a href="#skills" class="btn secondary" data-lang-de="Fähigkeiten ansehen" data-lang-en="View Skills"><i class="fas fa-arrow-down"></i> Fähigkeiten ansehen</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <i class="fas fa-laptop-code"></i>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">N I R O</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-lang-de="Start" data-lang-en="Home">Start</a></li>
+                <li><a href="#about" data-lang-de="Über mich" data-lang-en="About Me">Über mich</a></li>
+                <li><a href="#services" data-lang-de="Fähigkeiten" data-lang-en="Skills">Fähigkeiten</a></li>
+                <li><a href="#portfolio" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a></li>
+                <li><a href="#contact" data-lang-de="Kontakt" data-lang-en="Contact">Kontakt</a></li>
+            </ul>
+            <div class="header-toggles">
+                <button id="lang-toggle" class="btn-toggle lang-toggle" data-current-lang="de">English</button>
+                <button id="mode-toggle" class="btn-toggle">Dark Mode</button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section class="skills-section section-padding" id="skills">
-            <div class="content-card">
-                <h3 data-lang-de="Technische Fähigkeiten (Tech Stack)" data-lang-en="Technical Skills (Tech Stack)">Technische Fähigkeiten (Tech Stack)</h3>
-                <div class="skills-grid">
-                    <article class="skill-group">
-                        <h4 data-lang-de="Frontend & UI" data-lang-en="Frontend & UI">Frontend & UI</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> HTML5, CSS3</li>
-                            <li><i class="fas fa-check-circle"></i> JavaScript</li>
-                        </ul>
-                    </article>
-                    <article class="skill-group">
-                        <h4 data-lang-de="Backend & Daten" data-lang-en="Backend & Data">Backend & Daten</h4>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Python</li>
-                            <li><i class="fas fa-check-circle"></i> SQL</li>
-                            <li><i class="fas fa-check-circle"></i> R </li>
-                            <li><i class="fas fa-check-circle"></i> Oracle (Grundkenntnisse)</li>
-                        </ul>
-                    </article>
-                    <article class="skill-group">
-                        <h4 data-lang-de="Tools & Methoden" data-lang-en="Tools & Methods">Tools & Methoden</h4>
-                        <ul>
-                            <li><i class="fas fa-tools"></i> Git & GitHub</li>
-                            <li><i class="fas fa-tools"></i> VS Code</li>
-                            <li><i class="fas fa-tools"></i> IntelliJ IDEA</li>
-                        </ul>
-                    </article>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 data-lang-de="Willkommen" data-lang-en="Welcome">Willkommen</h1>
+            <p data-lang-de="Jetzt oder nie." data-lang-en="Just do it.">Jetzt oder nie.</p>
+            <a href="#contact" class="btn" data-lang-de="Jetzt kontaktieren" data-lang-en="Contact Now">Jetzt kontaktieren</a>
+        </div>
+    </section>
+
+    <!-- Über mich -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 data-lang-de="Über mich" data-lang-en="About Me">Über mich</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-lang-de="25 Jahre alt, aus Deutschland 🇩🇪<br>
+                    Industriekaufmann 🏭<br>
+                    Student der Wirtschaftsinformatik (B.Sc.) 🖥️<br>
+                    Geographie-Enthusiast 🌎 | Quiz-Liebhaber 🧠"
+                        data-lang-en="25 years old, from Germany 🇩🇪<br>
+                    Industrial Management Assistant 🏭<br>
+                    Bachelor Student in Business Informatics 🖥️<br>
+                    Geography Enthusiast 🌎 | Quiz Lover 🧠">
+                    25 Jahre alt, aus Deutschland 🇩🇪<br>
+                    Industriekaufmann 🏭<br>
+                    Student der Wirtschaftsinformatik (B.Sc.) 🖥️<br>
+                    Geographie-Enthusiast 🌎 | Quiz-Liebhaber 🧠
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="projects-section section-padding" id="projects">
-            <h3 data-lang-de="Meine wichtigsten Projekte" data-lang-en="My Key Projects">Meine wichtigsten Projekte</h3>
-            <div class="project-grid">
-                <article class="project-card">
-                    <h4>Tortenshop</h4>
-                    <p data-lang-de="Eine statische Website für einen Tortenshop, erstellt mit HTML, CSS und JS. ~In Bearbeitung~" data-lang-en="A static website for a cake shop, created using HTML, CSS and JS. ~In progress~">Eine statische Website für einen Tortenshop, erstellt mit HTML und CSS.</p>
-                    <div class="links">
-                        <a href="https://github.com/A2N1/Tortenwunder" target="_blank" data-lang-de="Code" data-lang-en="Code"><i class="fas fa-code"></i> Code</a>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <h4>Coming Soon</h4>
-                    <p data-lang-de="Bald verfügbar." data-lang-en="Coming soon.">Bald verfügbar.</p>
-                    <div class="links">
-                        <a href="#" target="_blank" data-lang-de="Details" data-lang-en="Details"><i class="fas fa-info-circle"></i> Details</a>
-                        <a href="https://github.com/A2N1/project-two" target="_blank" data-lang-de="Code" data-lang-en="Code"><i class="fas fa-code"></i> Code</a>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <h4>Quantum</h4>
-                    <p data-lang-de="Obsidian Vault für meine Notizen. Trainingsapp." data-lang-en="Obsidian Vault for my notes. Training app.">Fokus auf das Erlernen von **React.js** und Zustandsmanagement mit Hooks. Eine einfache To-Do-App ist in Arbeit.</p>
-                    <div class="links">
-                        <a href="#" target="_blank" data-lang-de="Bald verfügbar" data-lang-en="Coming soon"><i class="fas fa-laptop-code"></i> Bald verfügbar</a>
-                    </div>
-                </article>
+    <!-- Fähigkeiten -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 data-lang-de="Meine Fähigkeiten" data-lang-en="My Skills">Meine Fähigkeiten</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3 data-lang-de="Webentwicklung" data-lang-en="Web Development">Webentwicklung</h3>
+                    <p data-lang-de="Individuelle Websites & Webanwendungen." data-lang-en="Custom websites & web applications.">Individuelle Websites & Webanwendungen.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-industry"></i>
+                    <h3 data-lang-de="Unternehmensmanagement" data-lang-en="Business Management">Unternehmensmanagement</h3>
+                    <p data-lang-de="Von der Analyse bis zur Umsetzung." data-lang-en="From analysis to implementation.">Von der Analyse bis zur Umsetzung.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <h3 data-lang-de="Projektmanagement" data-lang-en="Project Management">Projektmanagement</h3>
+                    <p data-lang-de="Von der Idee bis zum Ziel." data-lang-en="From idea to goal.">Von der Idee bis zum Ziel.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3 data-lang-de="Datenanalyse" data-lang-en="Data Analysis">Datenanalyse</h3>
+                    <p data-lang-de="Datenmodellierung & Visualisierung mit SQL/R." data-lang-en="Data modeling & visualization with SQL/R.">Datenmodellierung & Visualisierung mit SQL/R.</p>
+                </div>
+                <!--Platzhalter Fähigkeiten
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3 data-lang-de="Fähigkeit" data-lang-en="Skill">Fähigkeit</h3>
+                    <p data-lang-de="Text." data-lang-en="Text.">Text.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3 data-lang-de="Fähigkeit" data-lang-en="Skill">Fähigkeit</h3>
+                    <p data-lang-de="Text." data-lang-en="Text.">Text.</p>
+                </div>
+                -->
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 data-lang-de="Meine Projekte" data-lang-en="My Projects">Meine Projekte</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Projekt 1">
+                    <div class="portfolio-overlay">
+                        <h3 data-lang-de="Projekt 1" data-lang-en="Project 1">Projekt 1</h3>
+                        <p data-lang-de="Webentwicklung" data-lang-en="Web Development">Webentwicklung</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Projekt 2">
+                    <div class="portfolio-overlay">
+                        <h3 data-lang-de="Projekt 2" data-lang-en="Project 2">Projekt 2</h3>
+                        <p data-lang-de="Projektmanagement" data-lang-en="Project Management">Projektmanagement</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Projekt 3">
+                    <div class="portfolio-overlay">
+                        <h3 data-lang-de="Projekt 3" data-lang-en="Project 3">Projekt 3</h3>
+                        <p data-lang-de="R-Project" data-lang-en="R-Project">R-Project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Kontakt -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 data-lang-de="Kontakt" data-lang-en="Contact">Kontakt</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Dein Name" data-lang-de="Dein Name" data-lang-en="Your Name" required>
+                <input type="email" placeholder="Deine E-Mail" data-lang-de="Deine E-Mail" data-lang-en="Your Email" required>
+                <textarea placeholder="Deine Nachricht" data-lang-de="Deine Nachricht" data-lang-en="Your Message" required></textarea>
+                <!--senden Button
+                <button type="submit" class="btn" data-lang-de="Senden" data-lang-en="Send">Senden</button>
+                -->
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 A2N1. Built with <i class="fas fa-heart"></i> | <a href="https://github.com/A2N1/A2N1.github.io" target="_blank" data-lang-de="Quellcode" data-lang-en="Source Code">Quellcode</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">N I R O</a>
+                </div>
+                <div class="footer-legal">
+                <p>© 2026 N I R O. Alle Rechte vorbehalten.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/A2N1"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.last.fm/user/AlphaNiro"><i class="fa-brands fa-lastfm"></i></a>
+                    <a href="https://letterboxd.com/alphaniro/"><i class="fa-brands fa-letterboxd"></i></a>
+                    <!--Socials
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    -->
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
