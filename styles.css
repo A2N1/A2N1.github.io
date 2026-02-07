@@ -121,7 +121,48 @@ body.dark-mode .nav-links a {
 }
 
 .lang-toggle {
-    background-color: var(--primary-color);
+    background: none; /* Hintergrund entfernen */
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Größe der Flagge */
+    padding: 5px;
+    color: var(--dark-color);
+    transition: transform 0.2s;
+}
+
+body.dark-mode .lang-toggle {
+    color: var(--light-text);
+}
+
+.lang-toggle:hover {
+    transform: scale(1.1);
+}
+
+.lang-toggle #lang-icon {
+    text-shadow:
+        1px  0px 0px #fff, /* Rechts */
+       -1px  0px 0px #fff, /* Links */
+        0px  1px 0px #fff, /* Unten */
+        0px -1px 0px #fff; /* Oben */
+    border-radius: 4px; /* Optional: Leichte Abrundung */
+}
+
+.mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Größe des Icons */
+    padding: 5px;
+    color: var(--dark-color);
+    transition: transform 0.2s;
+}
+
+body.dark-mode .mode-toggle {
+    color: var(--light-text);
+}
+
+.mode-toggle:hover {
+    transform: scale(1.1);
 }
 
 /* Footer */

@@ -26,8 +26,6 @@ window.addEventListener('scroll', function() {
 });
 
 // Language Toggle Logic
-const langToggleButton = document.getElementById('lang-toggle');
-
 function setLanguage(lang) {
     const elements = document.querySelectorAll('[data-lang-de], [data-lang-en]');
     elements.forEach(el => {
@@ -43,15 +41,12 @@ function setLanguage(lang) {
             }
         }
     });
-    langToggleButton.textContent = lang === 'de' ? 'English' : 'Deutsch';
+    const langIcon = document.getElementById('lang-icon');
+    langIcon.textContent = lang === 'de' ? '🇩🇪' : '🇬🇧';
+    const langToggleButton = document.getElementById('lang-toggle'); // Hier fehlt die Definition
     langToggleButton.setAttribute('data-current-lang', lang);
     document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
-}
-
-function toggleLanguage() {
-    const currentLang = langToggleButton.getAttribute('data-current-lang') === 'de' ? 'en' : 'de';
-    setLanguage(currentLang);
 }
 
 // Dark/Light Mode Logic
@@ -60,8 +55,8 @@ function toggleMode() {
     body.classList.toggle('dark-mode');
     const isDarkMode = body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    const modeToggleButton = document.getElementById('mode-toggle');
-    modeToggleButton.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+    const modeIcon = document.getElementById('mode-icon');
+    modeIcon.textContent = isDarkMode ? '🌙' : '☀️'; // Icon wechseln
 }
 
 function loadTheme() {
@@ -81,6 +76,10 @@ function loadLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
     loadLanguage();
-    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+    const currentLang = document.getElementById('lang-toggle').getAttribute('data-current-lang');
+    const newLang = currentLang === 'de' ? 'en' : 'de';
+    setLanguage(newLang);
+    });
     document.getElementById('mode-toggle').addEventListener('click', toggleMode);
 });
