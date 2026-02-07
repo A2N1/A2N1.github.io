@@ -31,20 +31,21 @@ function setLanguage(lang) {
     elements.forEach(el => {
         const key = `data-lang-${lang}`;
         if (el.hasAttribute(key)) {
-            const icon = el.querySelector('i');
             const placeholder = el.getAttribute(key);
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                 el.placeholder = placeholder;
             } else {
-                el.innerHTML = placeholder;
-                if (icon) el.prepend(icon);
+                el.textContent = placeholder;
             }
         }
     });
+
     const langIcon = document.getElementById('lang-icon');
     langIcon.textContent = lang === 'de' ? '🇩🇪' : '🇬🇧';
-    const langToggleButton = document.getElementById('lang-toggle'); // Hier fehlt die Definition
+
+    const langToggleButton = document.getElementById('lang-toggle');
     langToggleButton.setAttribute('data-current-lang', lang);
+
     document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
 }
@@ -55,8 +56,9 @@ function toggleMode() {
     body.classList.toggle('dark-mode');
     const isDarkMode = body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
     const modeIcon = document.getElementById('mode-icon');
-    modeIcon.textContent = isDarkMode ? '🌙' : '☀️'; // Icon wechseln
+    modeIcon.textContent = isDarkMode ? '🌙' : '☀️';
 }
 
 function loadTheme() {
@@ -66,9 +68,9 @@ function loadTheme() {
 
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
-        if (modeIcon) modeIcon.textContent = '🌙'; // Setze das Icon auf Mond
+        if (modeIcon) modeIcon.textContent = '🌙';
     } else {
-        if (modeIcon) modeIcon.textContent = '☀️'; // Setze das Icon auf Sonne
+        if (modeIcon) modeIcon.textContent = '☀️';
     }
 }
 
@@ -81,10 +83,14 @@ function loadLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
     loadLanguage();
+
+    // Sprachbutton-Listener
     document.getElementById('lang-toggle').addEventListener('click', () => {
-    const currentLang = document.getElementById('lang-toggle').getAttribute('data-current-lang');
-    const newLang = currentLang === 'de' ? 'en' : 'de';
-    setLanguage(newLang);
+        const currentLang = document.getElementById('lang-toggle').getAttribute('data-current-lang');
+        const newLang = currentLang === 'de' ? 'en' : 'de';
+        setLanguage(newLang);
     });
+
+    // Dark/Light Mode-Listener
     document.getElementById('mode-toggle').addEventListener('click', toggleMode);
 });

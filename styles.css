@@ -1,30 +1,35 @@
 :root {
-    --primary-color: #6c5ce7;
-    --secondary-color: #a29bfe;
-    --dark-color: #2d3436;
-    --light-color: #f5f6fa;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --dark-bg: #000000;
-    --light-text: #ffffff;
+    /* Light Mode Palette */
+    --primary-color: #424874;       /* Dunkelblau für Akzente/Buttons */
+    --secondary-color: #A6B1E1;    /* Blau-Grau für Hover-Effekte */
+    --light-bg: #F4EEFF;           /* Helllila als Hintergrund */
+    --light-secondary: #DCD6F7;    /* Lavendel für Sekundärflächen */
+    --dark-color: #424874;         /* Dunkelblau für Text */
+    --light-text: #212121;         /* Fast Schwarz für Kontrast */
+    --underline-color: #424874;    /* Farbe des Strichs unter Überschriften */
+    --shadow: 0 5px 15px rgba(66, 72, 116, 0.1);
 }
 
 body.dark-mode {
-    --primary-color: #6c5ce7;
-    --secondary-color: #a29bfe;
-    --dark-color: #f5f6fa;
-    --light-color: #121213;
-    --dark-bg: #121213;
-    --light-text: #ffffff;
+    /* Dark Mode Palette */
+    --primary-color: #0D7377;      /* Türkis für Akzente */
+    --secondary-color: #14FFEC;    /* Hell-Türkis für Hover-Effekte */
+    --light-bg: #212121;           /* Tiefes Schwarz als Hintergrund */
+    --light-secondary: #323232;    /* Dunkelgrau für Sekundärflächen */
+    --dark-color: #14FFEC;         /* Hell-Türkis für Text/Highlights */
+    --light-text: #F4EEFF;         /* Helllila für Text */
+    --underline-color: #0D7377;    /* Türkis für den Strich unter Überschriften */
+    --shadow: 0 5px 15px rgba(13, 115, 119, 0.3);
 }
 
 body {
-    background-color: var(--light-color);
+    background-color: var(--light-bg);
     color: var(--dark-color);
     line-height: 1.6;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Überschriften mit lila Strich */
+/* Überschriften mit Strich */
 h1, h2, h3 {
     text-align: center;
     margin-bottom: 20px;
@@ -35,21 +40,17 @@ h1::after, h2::after {
     display: block;
     width: 80px;
     height: 4px;
-    background: var(--primary-color);
+    background: var(--underline-color);
     margin: 10px auto 20px;
 }
 
 /* Navigation */
 .navbar {
-    background: #fff;
+    background: var(--light-bg);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
     z-index: 1000;
-}
-
-body.dark-mode .navbar {
-    background: var(--dark-bg);
 }
 
 .navbar .container {
@@ -102,29 +103,14 @@ body.dark-mode .nav-links a {
 .header-toggles {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.btn-toggle {
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.btn-toggle:hover {
-    opacity: 0.9;
+    gap: 15px;
 }
 
 .lang-toggle {
-    background: none; /* Hintergrund entfernen */
+    background: none;
     border: none;
     cursor: pointer;
-    font-size: 24px; /* Größe der Flagge */
+    font-size: 24px;
     padding: 5px;
     color: var(--dark-color);
     transition: transform 0.2s;
@@ -140,18 +126,18 @@ body.dark-mode .lang-toggle {
 
 .lang-toggle #lang-icon {
     text-shadow:
-        1px  0px 0px #fff, /* Rechts */
-       -1px  0px 0px #fff, /* Links */
-        0px  1px 0px #fff, /* Unten */
-        0px -1px 0px #fff; /* Oben */
-    border-radius: 4px; /* Optional: Leichte Abrundung */
+        1px  0px 0px #fff,
+       -1px  0px 0px #fff,
+        0px  1px 0px #fff,
+        0px -1px 0px #fff;
+    border-radius: 4px;
 }
 
 .mode-toggle {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 24px; /* Größe des Icons */
+    font-size: 24px;
     padding: 5px;
     color: var(--dark-color);
     transition: transform 0.2s;
@@ -167,19 +153,19 @@ body.dark-mode .mode-toggle {
 
 /* Footer */
 footer {
-    background: #fff;
+    background: var(--light-bg);
     color: var(--dark-color);
     padding: 20px 0;
 }
 
 body.dark-mode footer {
-    background: var(--dark-bg);
+    background: var(--light-bg);
     color: var(--light-text);
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Gleichmäßige Verteilung */
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     width: 100%;
     gap: 20px;
@@ -231,8 +217,7 @@ body.dark-mode .social-links a {
     color: var(--primary-color) !important;
 }
 
-
-/* Restliche Styles bleiben gleich */
+/* Allgemeine Stile */
 * {
     margin: 0;
     padding: 0;
@@ -247,10 +232,11 @@ body.dark-mode .social-links a {
     padding: 0 20px;
 }
 
+/* Buttons */
 .btn {
     display: inline-block;
     background: var(--primary-color);
-    color: #fff;
+    color: var(--light-text);
     padding: 12px 30px;
     border: none;
     border-radius: 5px;
@@ -275,8 +261,6 @@ body.dark-mode .social-links a {
     text-align: center;
 }
 
-/* Altes Foto - https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80 */
-
 .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
@@ -290,15 +274,16 @@ body.dark-mode .social-links a {
 /* About Section */
 .about {
     padding: 100px 0;
+    background: var(--light-bg);
+}
+
+body.dark-mode .about {
+    background: var(--light-bg);
 }
 
 .about h2 {
     margin-bottom: 50px;
     font-size: 36px;
-}
-
-.about h2 span {
-    color: var(--primary-color);
 }
 
 .about-content {
@@ -324,20 +309,16 @@ body.dark-mode .social-links a {
 /* Services Section */
 .services {
     padding: 100px 0;
-    background: var(--light-color);
+    background: var(--light-secondary);
 }
 
 body.dark-mode .services {
-    background: var(--dark-bg);
+    background: var(--light-secondary);
 }
 
 .services h2 {
     margin-bottom: 50px;
     font-size: 36px;
-}
-
-.services h2 span {
-    color: var(--primary-color);
 }
 
 .services-grid {
@@ -347,7 +328,7 @@ body.dark-mode .services {
 }
 
 .service-card {
-    background: var(--light-color);
+    background: var(--light-bg);
     padding: 30px;
     border-radius: 10px;
     text-align: center;
@@ -357,7 +338,7 @@ body.dark-mode .services {
 }
 
 body.dark-mode .service-card {
-    background: var(--dark-bg);
+    background: var(--light-secondary);
     color: var(--light-text);
 }
 
@@ -379,20 +360,16 @@ body.dark-mode .service-card {
 /* Portfolio Section */
 .portfolio {
     padding: 100px 0;
-    background: var(--light-color);
+    background: var(--light-secondary);
 }
 
 body.dark-mode .portfolio {
-    background: var(--dark-bg);
+    background: var(--light-secondary);
 }
 
 .portfolio h2 {
     margin-bottom: 50px;
     font-size: 36px;
-}
-
-.portfolio h2 span {
-    color: var(--primary-color);
 }
 
 .portfolio-grid {
@@ -447,11 +424,11 @@ body.dark-mode .portfolio {
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: var(--light-color);
+    background: var(--light-secondary);
 }
 
 body.dark-mode .contact {
-    background: var(--dark-bg);
+    background: var(--light-secondary);
 }
 
 .contact h2 {
@@ -470,16 +447,16 @@ body.dark-mode .contact {
 .contact-form input,
 .contact-form textarea {
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
     font-size: 16px;
-    background: var(--light-color);
+    background: var(--light-bg);
     color: var(--dark-color);
 }
 
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
-    background: var(--dark-bg);
+    background: var(--light-secondary);
     color: var(--light-text);
     border-color: var(--primary-color);
 }
