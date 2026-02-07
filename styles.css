@@ -236,7 +236,7 @@ body.dark-mode .social-links a {
 .btn {
     display: inline-block;
     background: var(--primary-color);
-    color: var(--light-text);
+    color: #fff;
     padding: 12px 30px;
     border: none;
     border-radius: 5px;
@@ -338,7 +338,7 @@ body.dark-mode .services {
 }
 
 body.dark-mode .service-card {
-    background: var(--light-secondary);
+    background: var(--light-bg);
     color: var(--light-text);
 }
 
