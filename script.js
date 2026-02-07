@@ -31,11 +31,13 @@ function setLanguage(lang) {
     elements.forEach(el => {
         const key = `data-lang-${lang}`;
         if (el.hasAttribute(key)) {
-            const placeholder = el.getAttribute(key);
+            const textWithNewlines = el.getAttribute(key);
+            // Ersetze \n durch <br> für Zeilenumbrüche
+            const textWithBreaks = textWithNewlines.replace(/\\n/g, '<br>');
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = placeholder;
+                el.placeholder = textWithBreaks;
             } else {
-                el.textContent = placeholder;
+                el.innerHTML = textWithBreaks; // Verwende innerHTML, um <br>-Tags zu interpretieren
             }
         }
     });
@@ -49,6 +51,7 @@ function setLanguage(lang) {
     document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
 }
+
 
 // Dark/Light Mode Logic
 function toggleMode() {

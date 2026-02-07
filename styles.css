@@ -13,10 +13,10 @@
 body.dark-mode {
     /* Dark Mode Palette */
     --primary-color: #0D7377;      /* Türkis für Akzente */
-    --secondary-color: #14FFEC;    /* Hell-Türkis für Hover-Effekte */
+    --secondary-color: #48b3aa;    /* Hell-Türkis für Hover-Effekte */
     --light-bg: #212121;           /* Tiefes Schwarz als Hintergrund */
     --light-secondary: #323232;    /* Dunkelgrau für Sekundärflächen */
-    --dark-color: #14FFEC;         /* Hell-Türkis für Text/Highlights */
+    --dark-color: #48b3aa;         /* Hell-Türkis für Text/Highlights */
     --light-text: #F4EEFF;         /* Helllila für Text */
     --underline-color: #0D7377;    /* Türkis für den Strich unter Überschriften */
     --shadow: 0 5px 15px rgba(13, 115, 119, 0.3);
@@ -360,11 +360,11 @@ body.dark-mode .service-card {
 /* Portfolio Section */
 .portfolio {
     padding: 100px 0;
-    background: var(--light-secondary);
+    background: var(--light-bg);
 }
 
 body.dark-mode .portfolio {
-    background: var(--light-secondary);
+    background: var(--light-bg);
 }
 
 .portfolio h2 {
