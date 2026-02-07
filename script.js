@@ -61,9 +61,14 @@ function toggleMode() {
 
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const modeIcon = document.getElementById('mode-icon');
+
     if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('mode-toggle').textContent = 'Light Mode';
+        body.classList.add('dark-mode');
+        if (modeIcon) modeIcon.textContent = '🌙'; // Setze das Icon auf Mond
+    } else {
+        if (modeIcon) modeIcon.textContent = '☀️'; // Setze das Icon auf Sonne
     }
 }
 
