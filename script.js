@@ -97,26 +97,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dark/Light Mode-Listener
     document.getElementById('mode-toggle').addEventListener('click', toggleMode);
 });
-
-// Modal-Logik
-document.getElementById('impressum-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('impressum-modal').style.display = 'block';
-});
-
-document.getElementById('datenschutz-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('datenschutz-modal').style.display = 'block';
-});
-
-document.querySelectorAll('.close').forEach(closeBtn => {
-    closeBtn.addEventListener('click', function() {
-        this.closest('.modal').style.display = 'none';
-    });
-});
-
-window.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal')) {
-        e.target.style.display = 'none';
-    }
-});

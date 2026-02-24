@@ -151,41 +151,6 @@ body.dark-mode .mode-toggle {
     transform: scale(1.1);
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-    background-color: var(--light-color);
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: var(--dark-color);
-}
-
-
 /* Footer */
 footer {
     background: var(--light-bg);
@@ -227,6 +192,23 @@ body.dark-mode .footer-logo a {
     font-size: 15px;
 }
 
+.footer-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
 body.dark-mode .footer-legal {
     color: var(--light-text);
 }
@@ -250,6 +232,68 @@ body.dark-mode .social-links a {
 
 .social-links a:hover {
     color: var(--secondary-color) !important;
+}
+
+/* Styles für die separaten Seiten (Impressum und Datenschutzerklärung) */
+.impressum-page, .datenschutz-page {
+    background-color: var(--light-bg);
+    color: var(--dark-color);
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+body.dark-mode .impressum-page,
+body.dark-mode .datenschutz-page {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Überschriften und Text auf den neuen Seiten */
+.impressum-page h1, .datenschutz-page h1,
+.impressum-page h2, .datenschutz-page h2,
+.impressum-page h3, .datenschutz-page h3 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+body.dark-mode .impressum-page h1,
+body.dark-mode .impressum-page h2,
+body.dark-mode .impressum-page h3,
+body.dark-mode .datenschutz-page h1,
+body.dark-mode .datenschutz-page h2,
+body.dark-mode .datenschutz-page h3 {
+    color: var(--light-text);
+}
+
+.impressum-page p, .datenschutz-page p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Links auf den neuen Seiten */
+.impressum-page a, .datenschutz-page a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.impressum-page a:hover, .datenschutz-page a:hover {
+    text-decoration: underline;
+}
+
+/* Zurück-Link */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
 }
 
 /* Allgemeine Stile */
